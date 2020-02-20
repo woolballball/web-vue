@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web-vue</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <p  class="i" :class="{ud:!show}" :title="cals">
+            {{ message }}
+        </p>
+        <p :class="{ud:!show}" :title="message">
+            {{cals}}
+        </p>
+        <span v-html="message"></span>
+
+        <p>
+            <span>{{nowAttr}}</span>
+            <span>{{now()}}</span>
+        </p>
+
+        <p v-if="!show">
+            可见的
+        </p>
+
+        <ol>
+            <todo-item-ex v-for="user in users" :todo="user" :key="user.pass"></todo-item-ex>
+        </ol>
+
+        <input type="text" v-model="text" :readonly="readonly">
+        <div @[eventtype]="showMsg">
+            <button @[eventtype].stop="showMsg">点击</button>
+            <a href="http:www.baidu.com" @click.prevent.stop="showMsg">默认行为</a>
+        </div>
+    </div>
+
+
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
