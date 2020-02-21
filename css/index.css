@@ -2,3 +2,4 @@ p.ud{border-bottom: 1px red solid;}
 p.i{font-style: italic;}
 li.sel{color: red;}
 li.i{font-style: italic;}
+div.box{padding:10px ;margin:10px;border:solid 1px #ccc;cursor: pointer;}

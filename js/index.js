@@ -4,9 +4,19 @@ Vue.component('todo-item',{
     template:'<li class="sel">待办事项</li>'
 });
 
-Vue.component('todo-item-ex',{
-    props:['todo'],
-    template:'<li>{{todo.name}}#{{todo.pass}}</li>'
+Vue.component('button-counter', {
+    data:   {
+        count: 0
+       
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })
+
+Vue.component('jx-btn',{
+    data: {
+        count: 0
+      },
+    template:'<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 });
 
 var app = new Vue({
@@ -21,7 +31,8 @@ var app = new Vue({
         eventtype:'click',
         styles:{
             li_i:'i',
-            li_8:{fontSize:'8px'}
+            li_8:{fontSize:'8px'},
+            div_box:'box'
         }
     },
     methods:{
@@ -30,6 +41,12 @@ var app = new Vue({
         },
         now:function(){
             return Date.now();
+        },
+        showName:function(name,event){
+            this.text=`${name}---${event.target.tagName}`;
+        },
+        capture:function(param){
+            alert(param);
         }
     },
     computed:{
