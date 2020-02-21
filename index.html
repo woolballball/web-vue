@@ -12,7 +12,7 @@
 <body>
     <div id="app">
 
-        <p  class="i" :class="{ud:!show}" :title="cals">
+        <p class="i" :class="{ud:!show}" :title="cals">
             {{ message }}
         </p>
         <p :class="{ud:!show}" :title="message">
@@ -25,12 +25,16 @@
             <span>{{now()}}</span>
         </p>
 
-        <p v-if="!show">
+        <p v-if="!show" class="ud">
             可见的
+        </p>
+        <p v-else class="ud">
+            不可见的
         </p>
 
         <ol>
             <todo-item-ex v-for="user in users" :todo="user" :key="user.pass"></todo-item-ex>
+            <todo-item v-if="!show" :style="styles.li_8" :class="[styles.li_i]"></todo-item>
         </ol>
 
         <input type="text" v-model="text" :readonly="readonly">

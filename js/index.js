@@ -1,7 +1,7 @@
 
 
 Vue.component('todo-item',{
-    template:'<li>待办事项</li>'
+    template:'<li class="sel">待办事项</li>'
 });
 
 Vue.component('todo-item-ex',{
@@ -18,11 +18,15 @@ var app = new Vue({
         file path is [${this.location.href}]</h2>`,
         users:[{name:'jim',pass:'123123'},{name:'tim',pass:'abcabc'}],
         text:'hi jx',
-        eventtype:'click'
+        eventtype:'click',
+        styles:{
+            li_i:'i',
+            li_8:{fontSize:'8px'}
+        }
     },
     methods:{
         showMsg:function(){
-            alert(this.users[0].name+'***'+app.show);
+           this.show=!!!this.show;
         },
         now:function(){
             return Date.now();
