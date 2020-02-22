@@ -10,3 +10,22 @@ web with vue
 |  @  | 绑定事件到 html 标签 | <button @click="say"></button>  |
 | []  | 绑定动态的属性键  | <button @[event-type]="say"></button> ,event-type取值vue.data |
 
+
+#### 动态属性
+```javascript
+var app=new Vue({
+  data:{
+    name:'jim'
+  }
+computed:{
+  any_attr:{
+    get:function(){return this.name;}
+    set:function(name){this.name=name;}
+  }
+},
+watch:{
+  name:function(newValue,oldValue){
+    alert(`the old value is [${oldValue},new value is [${newValue}]]`);
+  }
+});
+```
