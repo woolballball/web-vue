@@ -9,6 +9,7 @@ web with vue
 |   v-html   |   把 vue.data的值渲染成 html，而不是text   | ```<div v-html="any_words_red"></div>```  |
 |  @  | 绑定事件到 html 标签 | <button @click="say"></button>  |
 | []  | 绑定动态的属性键  | <button @[event-type]="say"></button> ,event-type取值vue.data |
+| v-model | 绑定数据到input上 | <input v-model="text"/> |
 
 #### 样式
 
@@ -64,3 +65,12 @@ watch:{
   }
 });
 ```
+
+#### 修饰符
+
+    .stop：停止冒泡
+    .prevent：阻止默认事件
+    .capture：优先响应
+    .self：之后触发的元素是自己时，才会触发自身的事件，如在冒泡过程中，如果点击的不是自己，自身的事件不会响应
+    .once：事件只会响应一次
+    .passive：会执行默认事件
