@@ -10,6 +10,41 @@ web with vue
 |  @  | 绑定事件到 html 标签 | <button @click="say"></button>  |
 | []  | 绑定动态的属性键  | <button @[event-type]="say"></button> ,event-type取值vue.data |
 
+#### 样式
+
+有三种绑定方式：
+```css
+.red{color:red;}
+```
+```js
+var data={
+  isRed:true,
+  redColor:'red',
+  size:'12px',
+  styles:{
+    'font-size':'12px',
+    color:'red'
+  }
+};
+var app = new Vue({
+  data:data
+});
+```
+```html
+1. 直接绑定：
+<div class="div-red"> ... </div>
+
+2. 通过:class绑定：
+<div :class="red"> ... </div>
+<div :class="[redColor]"> ... </div> redColor必须定义在vue.data中，不能读取css
+<div :class="[{red:isRed}]"> ... </div>
+
+3. 通过style绑定：
+<div :style="fontSize:size"> ... </div>
+<div :style="styles"> ... </div>
+
+```
+
 
 #### 动态属性
 ```javascript
