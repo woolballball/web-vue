@@ -1,63 +1,68 @@
+//---------------------------定义组件
+var btn = function (id, name, clss, func, url) {
+    this.name = name;
+    this.id = id;
+    this.clss = clss;
+    this.func = func;
+    this.url = url;
+}
+//---------------------------模拟后台返回数据
+var jxPaper={
+    init:function(){
+        app.btns.push(
+            new btn(1, '添加', 'btn-add', 'addFunc', 'http://www.baidu.com')
+        );
+        app.btns.push(
+            new btn(2, '编辑', 'btn-update', 'updateFunc', 'http://www.baidu.com')
+        );
+        app.btns.push(
+            new btn(3, '删除', 'btn-remove', 'removeFunc', 'http://www.baidu.com')
+        );
+    }
+}
 
-
-Vue.component('todo-item',{
-    template:'<li class="sel">待办事项</li>'
-});
-
-Vue.component('button-counter', {
-    data:   {
-        count: 0
-       
+//-----------------------定义当前页面的按钮方法
+var funcs={
+    addFunc() {
+        alert('add');
     },
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-  })
+    updateFunc() {
+        alert('update');
+    },
+    removeFunc() {
+        alert('remove');
+    }
+};
 
-Vue.component('jx-btn',{
-    data: {
-        count: 0
-      },
-    template:'<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+
+//------------导入自定义模板
+Vue.component("jx-btn", {
+    props: ["btn"],
+    template: `<button @click="()=>!!btn.func&&this[btn.func].apply(this,null)" :class="btn.clss" :id="btn.id">{{btn.name}}</button>`,
+    methods: funcs
 });
 
+
+//----------------------初始化vue
 var app = new Vue({
-    el: '#app',
+    el: '#btns',
     data: {
-        show:0,
-        readonly:null,
-        message: `<span style="color:red">hello web-vue,
-        file path is [${this.location.href}]</h2>`,
-        users:[{name:'jim',pass:'123123'},{name:'tim',pass:'abcabc'}],
-        text:'hi jx',
-        eventtype:'click',
-        styles:{
-            li_i:'i',
-            li_8:{fontSize:'8px'},
-            div_box:'box'
-        }
+        btns: []
     },
-    methods:{
-        showMsg:function(){
-           this.show=!!!this.show;
+    methods: {
+        btnFunc: function (evtName) {
+            alert(evtName);
+            this.$emit(evtName);
         },
-        now:function(){
-            return Date.now();
+        addFunc: function (fn) {
+            alert(fn);
         },
-        showName:function(name,event){
-            this.text=`${name}---${event.target.tagName}`;
-        },
-        capture:function(param){
-            alert(param);
-        }
-    },
-    computed:{
-        cals:function(){
-            return this.message.split('').reverse().join('');
-        },
-        nowAttr:function(){
-            return Date.now();
+        btn: function () {
+
         }
     }
 });
-app.$watch('message',function(n,o){
-    alert(o+'--->'+n);
-});
+//---------------模拟调用后台接口，初始化按钮数据
+jxPaper.init();
+
+

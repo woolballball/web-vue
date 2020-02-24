@@ -1,5 +1,23 @@
-p.ud{border-bottom: 1px red solid;}
-p.i{font-style: italic;}
-li.sel{color: red;}
-li.i{font-style: italic;}
-div.box{padding:10px ;margin:10px;border:solid 1px #ccc;cursor: pointer;}
+.btn-add{
+    border:solid 1px blue;
+    color: blue;
+    background-color: silver;
+}
+
+.btn-update{
+    border:solid 1px green;
+    color: green;
+    background-color: silver;
+}
+
+.btn-remove{
+    border:solid 1px red;
+    color: red;
+    background-color: silver;
+}
+
+button{
+    padding:10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+}

@@ -10,62 +10,13 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="btns">
 
-        <p class="i" :class="{ud:!show}" :title="cals">
-            {{ message }}
-        </p>
-        <p :class="{ud:!show}" :title="message">
-            {{cals}}
-        </p>
-        <span v-html="message"></span>
-
-        <p>
-            <span>{{nowAttr}}</span>
-            <span>{{now()}}</span>
-        </p>
-
-        <input type="checkbox" true-value="111" false-value="000" name="chk_v" id="chk_v" v-model="text">
-        <label for="chk_v">{{text}}</label>
-
-        <p></p>
-        <label for="numb">number</label>
-        <input type="number" name="" id="numb" v-model.number="text">
-
-        <p v-if="!show" class="ud">
-            可见的
-        </p>
-        <p v-else class="ud">
-            不可见的
-        </p>
-
-        <ol>
-            <todo-item-ex v-for="user in users" :todo="user" :key="user.pass"></todo-item-ex>
-            <todo-item v-if="!show" :style="styles.li_8" :class="[styles.li_i]"></todo-item>
-        </ol>
-
-        <input type="text" v-model.trim="text" :readonly="readonly" placeholder="随便写点啥">
-        <div class="box">
-            <button @[eventtype].ctrl.exact.right.stop="showMsg">ctrl+右键点击</button>
-            <button @[eventtype].stop="showName('内联处理器中的方法',$event)">内联处理器中的方法</button>
-            <a href="http:www.baidu.com" @click.prevent.stop="showMsg">默认行为</a>
-        </div>
-        <div :class="styles.div_box" @click.capture="capture('outer-outer')">
-            <div :class="styles.div_box" @click.self.capture="capture('outer')">
-                <div :class="styles.div_box" @click="capture('inner')">
-                    inner event
-                </div>
-            </div>
-
-        </div>
-        <div id="components-demo">
-            <button-counter></button-counter>
-          </div>
-
+        <jx-btn v-for="(btn, index) in btns" :key="index" :btn="btn"></jx-btn>
 
     </div>
 
-   
+
 
     <script src="js/index.js"></script>
 </body>
